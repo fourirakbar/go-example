@@ -1,0 +1,25 @@
+replicaCount: 1
+
+image:
+  repository: fourirakbar/go-k8s
+  tag: 0.1.5
+  pullPolicy: IfNotPresent
+
+service:
+  name: go-app
+  type: LoadBalancer
+  externalPort: 3000
+  internalPort: 3000
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+autoscalling:
+  minReplicas: 2
+  maxReplicas: 10
+  averageUtilization: 30
